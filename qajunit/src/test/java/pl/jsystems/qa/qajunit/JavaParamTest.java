@@ -24,13 +24,13 @@ public class JavaParamTest {
     }
 
     @ParameterizedTest(name = "Parameter test with string {0}")
-    @ValueSource(strings = {"hello","hello junit","helo students"})
+    @ValueSource(strings = {"hello","hello junit","hello students"})
     public void stringParamTest(String tekst){
         assertThat(tekst).contains("hello");
     }
 
     @ParameterizedTest(name = "Parameter test with multi param {0},{1}")
-    @CsvSource(value = {"Hello;5","Hello junit;15","Helo students;25"}, delimiter = ';')
+    @CsvSource(value = {"Hello;5","Hello junit;15","Hello students;25"}, delimiter = ';')
     public void multiParamTest(String strParam,int numParam){
         assertThat(strParam).contains("Hello");
         assertEquals(numParam % 5,0);
