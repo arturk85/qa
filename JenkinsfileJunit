@@ -4,6 +4,9 @@ pipeline {
         cron('40 15 * * *')
     }
 
+    parameters {
+        choice(name: 'TAG', choices: ['junit','smoke','param','nested','myfirst','schooltest'], description: 'Choose tag')
+    }
     stages {
         stage('checkout'){
             steps{
@@ -12,7 +15,7 @@ pipeline {
         }
         stage('build'){
             steps{
-                sh "mvn clean test"
+                sh "mvn clean test -Dgroups=${params.TAG} -pl qajunit"
             }
         }
     }
