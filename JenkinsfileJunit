@@ -1,4 +1,4 @@
-pipeLine {
+pipeline {
     agent any
     trigger {
         cron('40 15 * * *')
