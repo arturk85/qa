@@ -7,8 +7,7 @@ pipeline {
     stages {
         stage('checkout'){
             steps{
-                git url: 'https://github.com/arturk85/qa.git',
-                branch: 'develop'
+                git branch: 'develop', url: 'https://github.com/arturk85/qa'
             }
         }
         stage('build'){
