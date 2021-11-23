@@ -6,7 +6,7 @@ pipeline {
 
     parameters {
         choice(name: 'TAG', choices: ['junit','smoke','param','nested','myfirst','schooltest'], description: 'Choose tag')
-        choice(name: 'EX_TAG', choices: ['',''junit','smoke','param','nested','myfirst','schooltest'], description: 'Choose tag')
+        choice(name: 'EX_TAG', choices: ['','junit','smoke','param','nested','myfirst','schooltest'], description: 'Choose tag')
     }
     stages {
         stage('checkout'){
