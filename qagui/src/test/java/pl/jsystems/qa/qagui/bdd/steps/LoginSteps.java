@@ -43,17 +43,22 @@ public class LoginSteps {
     @Then("user can modify user profile")
     public void userCanModifyUserProfile() {
         wordpressMainUserPage = new WordpressMainUserPage(driver);
+        //wordpressMainUserPage.clickAvatar();
+        wordpressMyProfilePage = new WordpressMyProfilePage(driver);
         wordpressMainUserPage.clickAvatar();
+        wordpressMyProfilePage.clickSideMenuNotifications();
+        wordpressMainUserPage.clickAvatar();
+        wordpressMyProfilePage.clickSideMenuNotifications();
         wordpressNotificationPage = new WordpressNotificationPage(driver);
         assertTrue(wordpressNotificationPage.commentNotificationCheckBox.isSelected());
-        assertFalse(wordpressNotificationPage.aveSettingsButton.isEnabled());
+        assertFalse(wordpressNotificationPage.saveSettingsButton.isEnabled());
         wordpressNotificationPage.commentNotificationCheckBox.click();
 
         assertFalse(wordpressNotificationPage.commentNotificationCheckBox.isSelected());
-        assertTrue(wordpressNotificationPage.aveSettingsButton.isEnabled());
+        assertTrue(wordpressNotificationPage.saveSettingsButton.isEnabled());
 
         wordpressNotificationPage.commentNotificationCheckBox.click();
         assertTrue(wordpressNotificationPage.commentNotificationCheckBox.isSelected());
-        assertFalse(wordpressNotificationPage.aveSettingsButton.isEnabled());
+        assertFalse(wordpressNotificationPage.saveSettingsButton.isEnabled());
     }
 }
