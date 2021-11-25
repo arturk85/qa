@@ -1,6 +1,5 @@
-package pl.jsystems.qa.qagui.page;
+package pl.jsystems.qa.qagui.classic.page;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

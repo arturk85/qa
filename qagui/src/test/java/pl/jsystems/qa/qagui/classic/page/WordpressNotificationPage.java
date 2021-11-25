@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qagui.page;
+package pl.jsystems.qa.qagui.classic.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +11,9 @@ public class WordpressNotificationPage extends BasePage{
         PageFactory.initElements(driver,this);
     }
 
-//    @FindBy
-//    public WebElement
+    @FindBy(css = ".button.form-button.is-primary")
+    public WebElement aveSettingsButton;
+
+    @FindBy(xpath = "//*[@id=\"primary\"]/main/div[3]/div/div[1]/div[2]/div[2]/ul/li[1]/input")
+    public WebElement commentNotificationCheckBox;
 }

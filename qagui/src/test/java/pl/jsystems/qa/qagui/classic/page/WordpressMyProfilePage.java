@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qagui.page;
+package pl.jsystems.qa.qagui.classic.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
