@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    triggers {
+        cron('40 15 * * *')
+    }
+
+    parameters {
+        choice(name: 'TAG', choices: ['frontend','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
+        choice(name: 'EX_TAG', choices: ['','junit','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
+    }
+    stages {
+        stage('checkout'){
+            steps{
+                git branch: 'develop', url: 'https://github.com/arturk85/qa'
+            }
+        }
+        stage('build'){
+            steps{
+                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qagui"
+            }
+        }
+    }
+    post{
+        always{
+            allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [[key: 'allure.issues.tracker.pattern', value: 'http://tracker.company.com/%s'],
+                [key: 'allure.tests.management.pattern', value: 'http://tms.company.com/%s'],
+                ],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'qagui/target/allure-results']]
+            ])
+        }
+    }
+}
