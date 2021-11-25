@@ -1,5 +1,6 @@
 package pl.jsystems.qa.qagui;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 
@@ -15,4 +16,6 @@ public class GuiConfig {
     public static final String BROWSER = CONFIG.getString("browser");
     public static final String MACHINE = CONFIG.getString("machine");
     public static final String REMOTE_URL = CONFIG.getString("remoteUrl");
+    public static final String PLATFORM = CONFIG.getString("platform");
+
 }
