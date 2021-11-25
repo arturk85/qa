@@ -46,7 +46,13 @@ public class GuiConfiguration {
             setUpRemoteConfiguration();
         }
     }
-
+    private Platform setUpPlatform(){
+        if(GuiConfig.PLATFORM.equals("windows")){
+            return Platform.WIN10;
+        }else{
+            return Platform.LINUX;
+        }
+    }
     private WebDriver setUpRemoteConfiguration() {
         setUpRemoteDriver();
         return driver;
@@ -55,7 +61,7 @@ public class GuiConfiguration {
     private void setUpRemoteDriver() {
         try {
             driver = new RemoteWebDriver(new URL(GuiConfig.REMOTE_URL),
-                    new DesiredCapabilities(GuiConfig.BROWSER,"", Platform.LINUX));
+                    new DesiredCapabilities(GuiConfig.BROWSER,"", setUpPlatform()));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
