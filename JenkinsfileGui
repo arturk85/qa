@@ -9,8 +9,8 @@ pipeline {
         choice(name: 'BROWSER', choices: ['firefox','chrome','edge'], description: 'Choose browser')
         choice(name: 'MACHINE', choices: ['remote','local'], description: 'Choose machine')
         string(name: 'REMOTE_URL', defaultValue: 'http://172.17.2.193:4444/wd/hub', description: 'Remote selenium grid')
-        choice(name: 'TAG', choices: ['frontend','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
-        choice(name: 'EX_TAG', choices: ['','junit','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
+        choice(name: 'TAG', choices: ['notification','frontend','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
+        choice(name: 'EX_TAG', choices: ['','notification','frontend','junit','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
     }
     stages {
         stage('checkout'){
