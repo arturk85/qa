@@ -12,6 +12,7 @@ pipeline {
         choice(name: 'TAG', choices: ['notification','frontend','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
         choice(name: 'CUCUMBER_TAG', choices: ['@BDD','@login','@wordpress'], description: 'Choose cucumber tag')
         choice(name: 'EX_TAG', choices: ['','notification','frontend','junit','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
+        choice(name: 'PLATFORM', choices: ['windows','linux'], description: 'Choose platform')
     }
     stages {
         stage('checkout'){
@@ -21,7 +22,7 @@ pipeline {
         }
         stage('build'){
             steps{
-                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -DENVIRONMENT=${params.ENVIRONMENT} -DBROWSER=${params.BROWSER} -DMACHINE=${params.MACHINE} -pl qagui"
+                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -DENVIRONMENT=${params.ENVIRONMENT} -DBROWSER=${params.BROWSER} -DMACHINE=${params.MACHINE} -DPLATFORM=${params.PLATFORM} -pl qagui"
             }
         }
     }
