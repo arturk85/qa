@@ -6,7 +6,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,10 +19,11 @@ import java.time.Duration;
 import static com.google.common.truth.Truth.assertThat;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pl.jsystems.qa.qagui.GuiConfig.*;
 
 @Tags({@Tag("Frontend"),@Tag("wordpress")})
 @DisplayName("Frontend test")
-public class GuiTest extends GuiConfig{
+public class GuiTest extends GuiConfiguration {
 
     @Disabled
     @Test
@@ -54,17 +54,20 @@ public class GuiTest extends GuiConfig{
     WordpressMainUserPage wordpressMainUserPage;
     WordpressMyProfilePage wordpressMyProfilePage;
 
-    @Disabled
+
     @Test
     public void logInSecondTest(){
-        driver.get("https://wordpress.com/");
+//        driver.get("https://wordpress.com/");
+        driver.get(BASE_URL);
         wordpressMainPage = new WordpressMainPage(driver);
         wordpressMainPage.clickLogInButton();
 
         wordpressLoginPage = new WordpressLoginPage(driver);
-        wordpressLoginPage.enterUser("arturk85");
+//        wordpressLoginPage.enterUser("arturk85");
+        wordpressLoginPage.enterUser(LOGIN);
         wordpressLoginPage.clickUserButton();
-        wordpressLoginPage.enterPass("R0l@dm2011");
+//        wordpressLoginPage.enterPass("R0l@dm2011");
+        wordpressLoginPage.enterPass(PSWD);
         wordpressLoginPage.clickPassButton();
 
         wordpressMainUserPage = new WordpressMainUserPage(driver);
@@ -79,16 +82,19 @@ public class GuiTest extends GuiConfig{
     }
 
     public void moveToLoginPage(){
-        driver.get("https://wordpress.com/");
+        driver.get(BASE_URL);
+//        driver.get("https://wordpress.com/");
         wordpressMainPage = new WordpressMainPage(driver);
         wordpressMainPage.clickLogInButton();
     }
 
     public void moveToMainUserPage(){
         wordpressLoginPage = new WordpressLoginPage(driver);
-        wordpressLoginPage.enterUser("arturk85");
+        wordpressLoginPage.enterUser(LOGIN);
+//        wordpressLoginPage.enterUser("arturk85");
         wordpressLoginPage.clickUserButton();
-        wordpressLoginPage.enterPass("R0l@dm2011");
+        wordpressLoginPage.enterPass(PSWD);
+//        wordpressLoginPage.enterPass("R0l@dm2011");
         wordpressLoginPage.clickPassButton();
     }
 
@@ -98,19 +104,15 @@ public class GuiTest extends GuiConfig{
         wordpressMainUserPage.clickAvatar();
     }
 
-    @Tag("wordpress")
+    @Tag("notification")
     @Test
     public void notificationTest(){
         moveToLoginPage();
         moveToMainUserPage();
         moveToMyProfilePage();
         wordpressMyProfilePage = new WordpressMyProfilePage(driver);
-        wordpressMyProfilePage.clickSideMenuNotifications();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        wordpressMyProfilePage.clickSideMenuNotifications();
+
     }
 
     @Disabled

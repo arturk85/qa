@@ -5,6 +5,10 @@ pipeline {
     }
 
     parameters {
+        choice(name: 'ENVIRONMENT', choices: ['dev','test','stage','prd'], description: 'Choose env')
+        choice(name: 'BROWSER', choices: ['firefox','chrome','edge'], description: 'Choose browser')
+        choice(name: 'MACHINE', choices: ['remote','local'], description: 'Choose machine')
+        string(name: 'REMOTE_URL', defaultValue: 'http://172.17.2.193:4444/wd/hub', description: 'Remote selenium grid')
         choice(name: 'TAG', choices: ['frontend','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
         choice(name: 'EX_TAG', choices: ['','junit','smoke','param','nested','myfirst','schooltest','wordpress'], description: 'Choose tag')
     }
@@ -16,7 +20,7 @@ pipeline {
         }
         stage('build'){
             steps{
-                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qagui"
+                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -DENVIRONMENT=${params.ENVIRONMENT} -DBROWSER=${params.BROWSER} -DMACHINE=${params.MACHINE} -pl qagui"
             }
         }
     }
