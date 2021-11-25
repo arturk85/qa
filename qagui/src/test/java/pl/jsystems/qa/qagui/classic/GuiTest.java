@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qagui;
+package pl.jsystems.qa.qagui.classic;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -9,10 +9,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pl.jsystems.qa.qagui.page.WordpressLoginPage;
-import pl.jsystems.qa.qagui.page.WordpressMainPage;
-import pl.jsystems.qa.qagui.page.WordpressMainUserPage;
-import pl.jsystems.qa.qagui.page.WordpressMyProfilePage;
+import pl.jsystems.qa.qagui.classic.page.WordpressLoginPage;
+import pl.jsystems.qa.qagui.classic.page.WordpressMainPage;
+import pl.jsystems.qa.qagui.classic.page.WordpressMainUserPage;
+import pl.jsystems.qa.qagui.classic.page.WordpressMyProfilePage;
 
 import java.time.Duration;
 
