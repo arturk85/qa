@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pl.jsystems.qa.qaapi.author.model.Author;
 import pl.jsystems.qa.qaapi.author.service.AuthorService;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.hamcrest.Matchers.*;
-
+@Tag("api")
 public class ApiTest {
 
     AuthorService authorService;
