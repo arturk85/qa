@@ -54,7 +54,7 @@ public class GuiTest extends GuiConfiguration {
     WordpressMainUserPage wordpressMainUserPage;
     WordpressMyProfilePage wordpressMyProfilePage;
 
-
+    @Disabled
     @Test
     public void logInSecondTest(){
 //        driver.get("https://wordpress.com/");

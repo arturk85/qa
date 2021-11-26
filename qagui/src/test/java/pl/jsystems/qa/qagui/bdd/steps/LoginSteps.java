@@ -23,6 +23,7 @@ public class LoginSteps {
         this.driver = configStep.setUpWebDriver();
     }
 
+
     @Given("User starts on main page")
     public void userStartsOnMainPage(){
         driver.get(BASE_URL);

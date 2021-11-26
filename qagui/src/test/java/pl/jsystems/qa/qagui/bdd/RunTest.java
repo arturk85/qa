@@ -2,7 +2,9 @@ package pl.jsystems.qa.qagui.bdd;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
+
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
