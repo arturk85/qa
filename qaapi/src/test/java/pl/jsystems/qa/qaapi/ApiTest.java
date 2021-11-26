@@ -21,7 +21,7 @@ public class ApiTest {
     public void setUp(){
         authorService = new AuthorService();
     }
-    @Disabled
+
     @Test
     public void firstApiTest(){
         RestAssured.given().get("https://fakerestapi.azurewebsites.net/api/v1/Activities")
@@ -33,7 +33,7 @@ public class ApiTest {
 
     }
 
-    @Disabled
+
     @Test
     public void apiTest(){
         List<Author> author = RestAssured
@@ -45,6 +45,7 @@ public class ApiTest {
 
         assertThat(author.get(0).id).isEqualTo(1);
     }
+
 
     @Test
     public void authorByIdTest(){
@@ -75,5 +76,35 @@ public class ApiTest {
         List<Author> authors = authorService.getAuthors();
         assertThat(authors.get(0).id).isEqualTo(1);
         assertThat(authors.get(0).idBook).isEqualTo(1);
+    }
+
+    @Test
+    public void postAuthorTest(){
+        Author author = Author.builder().firstName("Batman").id(690l)
+                .idBook(69l).lastName("Robin").build();
+        final Author createdAuthor = authorService.postAuthor(author);
+        System.out.println(createdAuthor.toString());
+
+//        assertThat(createdAuthor.getId()).isEqualTo(613);
+//        assertThat(createdAuthor.getIdBook()).isEqualTo(200);
+    }
+
+    @Test
+    public void deleteAuthorTest(){
+
+        authorService.deleteAuthor(1);
+
+//        assertThat(createdAuthor.getId()).isEqualTo(613);
+//        assertThat(createdAuthor.getIdBook()).isEqualTo(200);
+    }
+
+    @Test
+    public void putAuthorTest(){
+        Author author = Author.builder().firstName("Batman").id(690l)
+                .idBook(69l).lastName("Robin").build();
+        authorService.putAuthor(author,222);
+
+//        assertThat(createdAuthor.getId()).isEqualTo(613);
+//        assertThat(createdAuthor.getIdBook()).isEqualTo(200);
     }
 }

@@ -56,5 +56,88 @@ public class AuthorService {
 
     }
 
+    public Response getAuthorsReponse(Map<String,?> params){
+        return RestAssured.given()
+                .spec(azureSpec.azureSpec())
+                .queryParams(params)
+                .get(AUTHORS)
+                .andReturn();
 
+    }
+
+    public Author postAuthor(Author author) {
+        return postAuthor(postAuthorResponse(author));
+    }
+
+
+    public Author postAuthor(Response response) {
+        return response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .extract()
+                .body()
+                .jsonPath()
+                .getObject("", Author.class);
+    }
+
+
+    public Response postAuthorResponse(Author author) {
+        return RestAssured
+                .given()
+                .spec(azureSpec.azureSpec())
+                .body(author)
+                .post(AUTHORS)
+                .andReturn();
+    }
+
+    public void deleteAuthor(int id) {
+        deleteAuthor(deleteAuthorResponse(id));
+    }
+
+
+    public void deleteAuthor(Response response) {
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .extract()
+                .body()
+                .jsonPath()
+                .getObject("", Author.class);
+    }
+
+    public Response deleteAuthorResponse(int id) {
+        return RestAssured
+                .given()
+                .spec(azureSpec.azureSpec())
+                .delete(AUTHORS,id)
+                .andReturn();
+    }
+
+    public Author putAuthor(Author author,int id) {
+        return putAuthor(putAuthorResponse(author,id));
+    }
+
+
+    public Author putAuthor(Response response) {
+        return response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .extract()
+                .body()
+                .jsonPath()
+                .getObject("", Author.class);
+    }
+
+
+    public Response putAuthorResponse(Object author, int id) {
+        return RestAssured
+                .given()
+                .spec(azureSpec.azureSpec())
+                .body(author)
+                .post(AUTHORS_BY_ID,id)
+                .andReturn();
+    }
 }

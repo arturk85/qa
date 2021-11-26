@@ -1,9 +1,14 @@
 package pl.jsystems.qa.qaapi.author.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
-import javax.swing.*;
 
+@Builder
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Author {
 
 
